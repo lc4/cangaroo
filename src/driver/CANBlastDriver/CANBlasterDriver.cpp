@@ -34,7 +34,7 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <QtNetwork/QUdpSocket>
-#include <QNetworkDatagram>
+//#include <QNetworkDatagram>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QList>
@@ -70,30 +70,30 @@ bool CANBlasterDriver::update() {
 
     while(1)
     {
-        while (udpSocket.hasPendingDatagrams())
-        {
-            QNetworkDatagram res = udpSocket.receiveDatagram(1024);
-            if(res.isValid())
-            {
-                QByteArray asd = res.data();
-                qDebug() << asd;
-                QJsonDocument document = QJsonDocument::fromJson(res.data());
-                QJsonObject rootObj = document.object();
+//        while (udpSocket.hasPendingDatagrams())
+//        {
+//            QNetworkDatagram res = udpSocket.receiveDatagram(1024);
+//            if(res.isValid())
+//            {
+//                QByteArray asd = res.data();
+//                qDebug() << asd;
+//                QJsonDocument document = QJsonDocument::fromJson(res.data());
+//                QJsonObject rootObj = document.object();
 
 
-                if(rootObj.length() == 2 &&
-                   rootObj["protocol"].toString() == "CANblaster" &&
-                   rootObj["version"].toInt() == 1)
-                {
-                    if(!detected_servers.contains(res.senderAddress().toString()))
-                        detected_servers.append(res.senderAddress().toString());
-                }
-                else
-                {
-                    fprintf(stderr, "Invalid CANblaster server. Protocol: %s  Version: %d \r\n", rootObj["protocol"].toString().toStdString().c_str(), rootObj["version"].toInt());
-                }
-            }
-        }
+//                if(rootObj.length() == 2 &&
+//                   rootObj["protocol"].toString() == "CANblaster" &&
+//                   rootObj["version"].toInt() == 1)
+//                {
+//                    if(!detected_servers.contains(res.senderAddress().toString()))
+//                        detected_servers.append(res.senderAddress().toString());
+//                }
+//                else
+//                {
+//                    fprintf(stderr, "Invalid CANblaster server. Protocol: %s  Version: %d \r\n", rootObj["protocol"].toString().toStdString().c_str(), rootObj["version"].toInt());
+//                }
+//            }
+//        }
 
         struct timeval tv;
         gettimeofday(&tv,NULL);

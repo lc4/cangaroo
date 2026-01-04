@@ -33,7 +33,7 @@
 #include <window/TraceWindow/TraceWindow.h>
 #include <window/SetupDialog/SetupDialog.h>
 #include <window/LogWindow/LogWindow.h>
-#include <window/GraphWindow/GraphWindow.h>
+//#include <window/GraphWindow/GraphWindow.h>
 #include <window/CanStatusWindow/CanStatusWindow.h>
 #include <window/RawTxWindow/RawTxWindow.h>
 
@@ -358,24 +358,25 @@ QMainWindow *MainWindow::createTraceWindow(QString title)
 
 QMainWindow *MainWindow::createGraphWindow(QString title)
 {
-    if (title.isNull()) {
-        title = "Graph";
-    }
-    QMainWindow *mm = createTab(title);
-    mm->setCentralWidget(new GraphWindow(mm, backend()));
-    addLogWidget(mm);
+//    if (title.isNull()) {
+//        title = "Graph";
+//    }
+//    QMainWindow *mm = createTab(title);
+//    mm->setCentralWidget(new GraphWindow(mm, backend()));
+//    addLogWidget(mm);
 
-    return mm;
+//    return mm;
+	return NULL;
 }
 
 void MainWindow::addGraphWidget(QMainWindow *parent)
 {
-    if (!parent) {
-        parent = currentTab();
-    }
-    QDockWidget *dock = new QDockWidget("Graph", parent);
-    dock->setWidget(new GraphWindow(dock, backend()));
-    parent->addDockWidget(Qt::BottomDockWidgetArea, dock);
+//    if (!parent) {
+//        parent = currentTab();
+//    }
+//    QDockWidget *dock = new QDockWidget("Graph", parent);
+//    dock->setWidget(new GraphWindow(dock, backend()));
+//    parent->addDockWidget(Qt::BottomDockWidgetArea, dock);
 }
 
 void MainWindow::addRawTxWidget(QMainWindow *parent)
@@ -436,7 +437,7 @@ void MainWindow::showAboutDialog()
        "cangaroo\n"
        "open source can bus analyzer\n"
        "\n"
-       "version 0.2.3\n"
+	   "version 0.2.3-\n"
        "\n"
        "(c)2015-2017 Hubert Denkmair\n"
        "(c)2018-2022 Ethan Zonca"

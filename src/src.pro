@@ -3,7 +3,7 @@ lessThan(QT_MAJOR_VERSION, 5): error("requires Qt 5")
 QT += core gui
 QT += widgets
 QT += xml
-QT += charts
+# QT += charts
 QT += serialport
 
 TARGET = cangaroo
@@ -12,12 +12,12 @@ CONFIG += warn_on
 CONFIG += link_pkgconfig
 
 DESTDIR = ../bin
-MOC_DIR = ../build/moc
-RCC_DIR = ../build/rcc
-UI_DIR = ../build/ui
-unix:OBJECTS_DIR = ../build/o/unix
-win32:OBJECTS_DIR = ../build/o/win32
-macx:OBJECTS_DIR = ../build/o/mac
+# MOC_DIR = ../build/moc
+# RCC_DIR = ../build/rcc
+# UI_DIR = ../build/ui
+# unix:OBJECTS_DIR = ../build/o/unix
+# win32:OBJECTS_DIR = ../build/o/win32
+# macx:OBJECTS_DIR = ../build/o/mac
 
 
 SOURCES += main.cpp\
@@ -35,7 +35,7 @@ include($$PWD/parser/dbc/dbc.pri)
 include($$PWD/window/TraceWindow/TraceWindow.pri)
 include($$PWD/window/SetupDialog/SetupDialog.pri)
 include($$PWD/window/LogWindow/LogWindow.pri)
-include($$PWD/window/GraphWindow/GraphWindow.pri)
+# include($$PWD/window/GraphWindow/GraphWindow.pri)
 include($$PWD/window/CanStatusWindow/CanStatusWindow.pri)
 include($$PWD/window/RawTxWindow/RawTxWindow.pri)
 

@@ -108,7 +108,7 @@ private:
     can_status_t _status;
     ts_mode_t _ts_mode;
 
-    struct timeval _heartbeat_time;
+	//struct timeval _heartbeat_time;
     QUdpSocket* _socket;
     const char *cname();
 

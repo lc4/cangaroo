@@ -34,7 +34,7 @@
 #include <QProcess>
 #include <QThread>
 #include <QTimer>
-#include <QNetworkDatagram>
+//#include <QNetworkDatagram>
 
 
 CANBlasterInterface::CANBlasterInterface(CANBlasterDriver *driver, int index, QString name, bool fd_support)
@@ -52,7 +52,7 @@ CANBlasterInterface::CANBlasterInterface(CANBlasterDriver *driver, int index, QS
     _config.supports_canfd = fd_support;
 
     // Record start time
-    gettimeofday(&_heartbeat_time,NULL);
+	//gettimeofday(&_heartbeat_time,NULL);
 }
 
 CANBlasterInterface::~CANBlasterInterface() {
@@ -244,18 +244,18 @@ bool CANBlasterInterface::readMessage(QList<CanMessage> &msglist, unsigned int t
     struct timeval now;
     gettimeofday(&now,NULL);
 
-    if(now.tv_sec - _heartbeat_time.tv_sec > 1)
-    {
+//    if(now.tv_sec - _heartbeat_time.tv_sec > 1)
+//    {
 
-        _heartbeat_time.tv_sec = now.tv_sec;
+//        _heartbeat_time.tv_sec = now.tv_sec;
 
-        if(_isOpen)
-        {
-            QByteArray Data;
-            Data.append("Heartbeat");
-            _socket->writeDatagram(Data, QHostAddress(getName()), 20002);
-        }
-    }
+//        if(_isOpen)
+//        {
+//            QByteArray Data;
+//            Data.append("Heartbeat");
+//            _socket->writeDatagram(Data, QHostAddress(getName()), 20002);
+//        }
+//    }
 
     // NOTE: This only works with standard CAN frames right now!
 
